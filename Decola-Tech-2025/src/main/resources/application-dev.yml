@@ -1,29 +1,24 @@
-Spring:
+spring:
   datasource:
-  url: jdbc:h2:mem:dt2025 #explicando que quero um banco "h2" em memória com nome "dt2025"
-  username: dt2025
-  password:
-  driver-class-name: org.h2.Driver #driver do banco h2
-  hikari:
-    maximum-pool-size: 10 #tamanho máximo do pool de conexões
-    minimum-idle: 5 #tamanho mínimo do pool de conexões
-    idle-timeout: 60000 #tempo máximo que uma conexão pode ficar ociosa
-    connection-timeout: 30000 #tempo máximo para obter uma conexão do pool
-    max-lifetime: 1800000 #tempo máximo de vida de uma conexão no pool
+    url: jdbc:h2:mem:dt2025  # Banco H2 em memória com nome dt2025
+    username: dt2025
+    password: 
+    driver-class-name: org.h2.Driver  # Driver do banco H2
 
-jpa:
-  show-sql: true #ver as querys que estão sendo executadas
-  open-in-view: false
-  hibernate:
-    ddl-auto: create # validate, update, create-drop; fazendo com que o hibernate crie o banco
-  properties:
+  jpa:
+    show-sql: true  # Exibe as queries executadas
+    open-in-view: false
     hibernate:
-      format_sql: true
+      ddl-auto: create  # Pode ser 'validate', 'update', 'create-drop'
+    properties:
+      hibernate:
+        format_sql: true  # Formatação das queries SQL
 
-h2: #configuração do banco h2, para poder acessar o banco via browser
-  console:
-    enabled: true
-    path: /h2-console
-    settings:
-      trace: false
-      web-allow-others: false
+  h2:
+    console:
+      enabled: true
+      path: /h2-console  # Caminho para acessar o console H2 no browser
+      settings:
+        trace: false
+        web-allow-others: false  # Impede o acesso ao console por outros dispositivos
+
