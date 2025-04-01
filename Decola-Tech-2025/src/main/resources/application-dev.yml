@@ -1,0 +1,22 @@
+Spring:
+  datasource:
+  url: jbdc:h2:mem:dt2025 #explicando que quero um banco "h2" em memória com nome "dt2025"
+  username: dt2025
+  password:
+
+jpa:
+  show-sql: true #ver as querys que estão sendo executadas
+  open-in-view: false
+  hibernate:
+    ddl-auto: create # validate, update, create-drop; fazendo com que o hibernate crie o banco
+  properties:
+    hibernate:
+      format_sql: true
+
+h2: #configuração do banco h2, para poder acessar o banco via browser
+  console:
+    enabled: true
+    path: /h2-console
+    settings:
+      trace: false
+      web-allow-others: false
