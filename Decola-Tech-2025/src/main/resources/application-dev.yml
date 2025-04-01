@@ -1,8 +1,15 @@
 Spring:
   datasource:
-  url: jbdc:h2:mem:dt2025 #explicando que quero um banco "h2" em memória com nome "dt2025"
+  url: jdbc:h2:mem:dt2025 #explicando que quero um banco "h2" em memória com nome "dt2025"
   username: dt2025
   password:
+  driver-class-name: org.h2.Driver #driver do banco h2
+  hikari:
+    maximum-pool-size: 10 #tamanho máximo do pool de conexões
+    minimum-idle: 5 #tamanho mínimo do pool de conexões
+    idle-timeout: 60000 #tempo máximo que uma conexão pode ficar ociosa
+    connection-timeout: 30000 #tempo máximo para obter uma conexão do pool
+    max-lifetime: 1800000 #tempo máximo de vida de uma conexão no pool
 
 jpa:
   show-sql: true #ver as querys que estão sendo executadas
