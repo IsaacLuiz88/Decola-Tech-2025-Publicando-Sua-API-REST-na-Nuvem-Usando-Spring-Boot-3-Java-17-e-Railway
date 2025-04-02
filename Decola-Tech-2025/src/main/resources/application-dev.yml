@@ -4,6 +4,10 @@ spring:
     username: dt2025
     password: 
     driver-class-name: org.h2.Driver  # Driver do banco H2
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher  # Necessário para Spring Boot 3.x
+
 
   jpa:
     show-sql: true  # Exibe as queries executadas
@@ -22,3 +26,12 @@ spring:
         trace: false
         web-allow-others: false  # Impede o acesso ao console por outros dispositivos
 
+# Configuração do SpringDoc (deve estar no nível raiz, não dentro de spring)
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html  # Usar o caminho padrão do SpringDoc 2.x
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  show-actuator: true
