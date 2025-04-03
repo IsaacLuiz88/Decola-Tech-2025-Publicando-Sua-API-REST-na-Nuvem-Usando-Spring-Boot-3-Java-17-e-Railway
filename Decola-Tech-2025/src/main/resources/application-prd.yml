@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${PGHOST}:${PGPORT}/${PGDATABASE}  # Banco PostgreSQL com variáveis de ambiente
+    username: ${PGUSER}
+    password: ${PGPASSWORD}
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate  # Pode ser 'validate', 'update', 'create-drop'
