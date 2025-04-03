@@ -1,6 +1,8 @@
 package me.dio.model;
 
 import java.math.BigDecimal;
+import java.security.SecureRandom;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,6 +30,36 @@ public class Account {
 	public Long getId() {
 		return id;
 	}
+	
+	 // Construtor sem argumentos para gerar o número automaticamente
+    public Account() {
+        // Gerar o número da conta ao criar um objeto
+        this.number = generateAccountNumber();
+    }
+
+ // Método para gerar o número de conta aleatório com até 12 caracteres
+    private String generateAccountNumber() {
+        // Criando um gerador seguro para números aleatórios
+        SecureRandom random = new SecureRandom();
+        
+        // Gerando um número aleatório de até 12 dígitos (exclusivamente numérico)
+        long accountNumber = Math.abs(random.nextLong()) % 1_000_000_000_000L;  // Máximo de 12 dígitos
+        
+        // Formatando para garantir que o número tenha exatamente 12 dígitos com leading zeros
+        return String.format("%012d", accountNumber);
+    }
+
+    // Método adicional para garantir que o número de conta seja único
+    public static String generateUniqueAccountNumber(Set<String> existingNumbers) {
+        String accountNumber;
+        do {
+            // Gerar um novo número de conta
+            accountNumber = new Account().generateAccountNumber();
+        } while (existingNumbers.contains(accountNumber)); // Verificar duplicidade com a lista existente
+        
+        return accountNumber;
+    }
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
